@@ -30,11 +30,23 @@ async function ipAdresimiAl() {
 	ADIM 5'e gelene kadar fonksiyonunuzu test etmek için ip nizi URL'ye manuel olarak ekleyebilirsiniz.
 */
 // https://apis.ergineer.com/ipgeoapi/176.41.47.150
-axios
+const veriler = axios
   .get("https://apis.ergineer.com/ipgeoapi/176.41.47.150")
   .then((response) => {
-    let veriler = response;
+    return response.data;
   });
+console.log(veriler);
+// async function dataAl() {
+//   await axios({
+//     method: "get",
+//     url: "https://apis.ergineer.com/ipgeoapi/176.41.47.150",
+//   })
+//     .then(function (response) {
+//       return response.data;
+//     })
+//     .then(function (c) {
+//       benimData = c;
+//     });
 
 /*
 	ADIM 2: Geri döndürülen verileri inceleyin, bu sizin ip bilgileriniz! 
@@ -93,7 +105,6 @@ function ipControl(nesne) {
 */
 const cardsHtml = document.querySelector(".cards");
 cardsHtml.append(ipControl(veriler));
-
 /*
 	ADIM 5: Manuel olarak eklediğiniz IP adresini dinamiğe dönüştürün. 
 	Sayfanın en üstünde ---değiştirmeyin--- etiketleri arasında yer alan asenkron ipAdresimiAl() fonksiyonuna 
